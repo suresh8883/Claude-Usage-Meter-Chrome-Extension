@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Usage Meter for Claude</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 720px; margin: 40px auto; padding: 0 20px;
+    font: 16px/1.7 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: #1f1e1d; background: #faf9f7; }
+  @media (prefers-color-scheme: dark) { body { color: #e8e6e0; background: #1f1e1d; } }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  h2 { font-size: 18px; margin-top: 28px; }
+  .date { opacity: .6; font-size: 14px; }
+  ul { padding-left: 22px; }
+  code { background: rgba(130,130,130,.15); padding: 1px 5px; border-radius: 4px; }
+  .note { opacity: .7; font-size: 14px; border-top: 1px solid rgba(130,130,130,.25); margin-top: 32px; padding-top: 14px; }
+</style>
+</head>
+<body>
+  <h1>Privacy Policy — Usage Meter for Claude</h1>
+  <p class="date">Last updated: 19 June 2026</p>
+
+  <p>Usage Meter for Claude (“the extension”) displays your own Claude usage on claude.ai. This policy explains exactly what it does with data.</p>
+
+  <h2>What the extension accesses</h2>
+  <p>When you are signed in to claude.ai, the extension calls Claude’s own usage endpoints using your existing browser session:</p>
+  <ul>
+    <li><code>GET https://claude.ai/api/organizations</code> — to find your organization id.</li>
+    <li><code>GET https://claude.ai/api/organizations/{id}/usage</code> — to read your 5-hour and weekly usage percentages and reset times.</li>
+  </ul>
+  <p>This is the same data shown on claude.ai’s own Settings → Usage page.</p>
+
+  <h2>What it stores</h2>
+  <p>The extension stores the following <strong>locally on your device only</strong>, using the browser’s <code>chrome.storage.local</code>:</p>
+  <ul>
+    <li>Your display settings (refresh interval, minimized/hidden state).</li>
+    <li>Your Claude organization id and the most recent usage values, so the bar appears instantly next time.</li>
+  </ul>
+
+  <h2>What it does NOT do</h2>
+  <ul>
+    <li>It does <strong>not</strong> send any data to the developer or any third-party server.</li>
+    <li>It does <strong>not</strong> use analytics, tracking, advertising, or fingerprinting.</li>
+    <li>It does <strong>not</strong> sell or share any data with anyone.</li>
+    <li>It does <strong>not</strong> store your password or session cookies.</li>
+    <li>It does <strong>not</strong> collect names, emails, or other personal information.</li>
+  </ul>
+  <p>All processing happens inside your browser, between your browser and claude.ai. Nothing leaves your machine.</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><code>storage</code> — to save your settings and cache the latest usage values locally.</li>
+    <li>Host access to <code>https://claude.ai/*</code> — to read your usage from Claude’s API.</li>
+  </ul>
+
+  <h2>Data retention and removal</h2>
+  <p>Cached usage and settings remain in your browser until you clear them. Removing the extension deletes all of its locally stored data.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy: <code>&lt;your-contact-email&gt;</code></p>
+
+  <p class="note">This extension is an independent project and is not affiliated with, endorsed by, or sponsored by Anthropic. “Claude” is a trademark of Anthropic.</p>
+</body>
+</html>

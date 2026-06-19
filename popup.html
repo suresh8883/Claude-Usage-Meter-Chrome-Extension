@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { width: 280px; margin: 0; font: 13px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .wrap { padding: 14px; }
+    h1 { font-size: 14px; margin: 0 0 8px; }
+    #status { font-size: 12px; opacity: 0.75; margin-bottom: 10px; }
+    .row { display: flex; gap: 8px; margin-bottom: 10px; }
+    button { flex: 1; padding: 6px 8px; border: 1px solid rgba(130,130,130,0.4); border-radius: 8px; background: rgba(130,130,130,0.08); cursor: pointer; font: inherit; }
+    button:hover { background: rgba(130,130,130,0.18); }
+    hr { border: none; border-top: 1px solid rgba(130,130,130,0.25); margin: 10px 0; }
+    label { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0; }
+    input[type="number"] { width: 64px; padding: 3px 5px; }
+    .muted { opacity: 0.65; }
+    .small { font-size: 11px; }
+    p { margin: 8px 0 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Usage Meter for Claude</h1>
+    <div id="status">…</div>
+
+    <div class="row">
+      <button id="refresh">Refresh now</button>
+      <button id="sync">Open Usage page</button>
+    </div>
+
+    <hr />
+
+    <label>Refresh every <span><input id="poll" type="number" min="10" step="5" /> sec</span></label>
+    <label>Debug logging <input id="debug" type="checkbox" /></label>
+    <label>Hide bar completely <input id="hidden" type="checkbox" /></label>
+
+    <p class="muted small">Reads usage from claude.ai's own API in your browser (browser only). Nothing leaves your browser. No API key.</p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

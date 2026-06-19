@@ -1,0 +1,167 @@
+/* Usage Meter for Claude — refined, native-feeling pill */
+
+#cum-bar {
+  /* dark theme tokens (default) */
+  --txt: #ECEAE3;
+  --muted: rgba(236, 234, 227, 0.52);
+  --label: rgba(236, 234, 227, 0.56);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.09);
+  --track: rgba(255, 255, 255, 0.11);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 0 8px;
+  padding: 7px 8px 7px 16px;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--txt);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  backdrop-filter: blur(12px) saturate(125%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 1px 2px rgba(0, 0, 0, 0.12);
+  animation: cum-in 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+#cum-bar:hover { background: var(--surface-hover); border-color: rgba(255, 255, 255, 0.14); }
+
+@keyframes cum-in { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: none; } }
+
+/* layout */
+#cum-bar .cum-main { display: flex; align-items: center; width: 100%; gap: 16px; }
+#cum-bar .cum-body { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 0; }
+#cum-bar .cum-meta { display: flex; align-items: center; gap: 9px; margin-left: auto; flex: none; }
+
+/* meter */
+#cum-bar .cum-meter { display: flex; align-items: center; gap: 9px; }
+#cum-bar .cum-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--label);
+  white-space: nowrap;
+}
+#cum-bar .cum-track {
+  position: relative;
+  width: 88px;
+  height: 5px;
+  border-radius: 4px;
+  background: var(--track);
+  overflow: hidden;
+}
+#cum-bar .cum-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #5FA37F, #83C6A0);
+  box-shadow: 0 0 8px rgba(120, 200, 160, 0.35);
+  transition: width 0.55s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.3s ease, box-shadow 0.3s ease;
+}
+#cum-bar .cum-fill.cum-amber { background: linear-gradient(90deg, #D29A4F, #E6BD7D); box-shadow: 0 0 8px rgba(220, 165, 90, 0.32); }
+#cum-bar .cum-fill.cum-red { background: linear-gradient(90deg, #D9775A, #E89478); box-shadow: 0 0 9px rgba(217, 119, 90, 0.4); }
+#cum-bar .cum-pct {
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--txt);
+  min-width: 42px;
+}
+#cum-bar .cum-reset { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+#cum-bar .cum-divider { width: 1px; height: 16px; background: var(--border); flex: none; }
+
+/* meta: live dot + updated + minimize */
+#cum-bar .cum-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+  background: #7FCBA4;
+  box-shadow: 0 0 0 0 rgba(127, 203, 164, 0.55);
+  animation: cum-pulse 2.6s ease-out infinite;
+}
+@keyframes cum-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(127, 203, 164, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(127, 203, 164, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(127, 203, 164, 0); }
+}
+#cum-bar .cum-updated { font-size: 11px; color: var(--muted); white-space: nowrap; }
+#cum-bar .cum-min {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+#cum-bar .cum-min:hover { background: var(--surface-hover); color: var(--txt); }
+#cum-bar .cum-min svg { width: 13px; height: 13px; display: block; }
+
+#cum-bar .cum-status { font-size: 11.5px; color: var(--muted); }
+
+/* collapsed chip */
+#cum-bar.cum-collapsed { width: auto; padding: 6px 13px; }
+#cum-bar .cum-restore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--txt);
+  font-size: 12px;
+  font-weight: 600;
+}
+#cum-bar .cum-chip-text { letter-spacing: 0.01em; }
+#cum-bar .cum-restore .cum-chev { display: inline-flex; color: var(--muted); transition: color 0.15s ease; }
+#cum-bar .cum-restore .cum-chev svg { width: 12px; height: 12px; display: block; }
+#cum-bar .cum-restore:hover .cum-chev { color: var(--txt); }
+
+/* light theme (system) */
+@media (prefers-color-scheme: light) {
+  #cum-bar {
+    --txt: #2B2A27;
+    --muted: rgba(43, 42, 39, 0.55);
+    --label: rgba(43, 42, 39, 0.5);
+    --surface: rgba(0, 0, 0, 0.035);
+    --surface-hover: rgba(0, 0, 0, 0.06);
+    --border: rgba(0, 0, 0, 0.09);
+    --track: rgba(0, 0, 0, 0.10);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.06);
+  }
+  #cum-bar:hover { border-color: rgba(0, 0, 0, 0.14); }
+}
+
+/* explicit Claude theme attribute, if present, wins over system */
+html[data-mode="light"] #cum-bar {
+  --txt: #2B2A27;
+  --muted: rgba(43, 42, 39, 0.55);
+  --label: rgba(43, 42, 39, 0.5);
+  --surface: rgba(0, 0, 0, 0.035);
+  --surface-hover: rgba(0, 0, 0, 0.06);
+  --border: rgba(0, 0, 0, 0.09);
+  --track: rgba(0, 0, 0, 0.10);
+}
+html[data-mode="dark"] #cum-bar {
+  --txt: #ECEAE3;
+  --muted: rgba(236, 234, 227, 0.52);
+  --label: rgba(236, 234, 227, 0.56);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.09);
+  --track: rgba(255, 255, 255, 0.11);
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #cum-bar, #cum-bar * { animation: none !important; transition: none !important; }
+}
