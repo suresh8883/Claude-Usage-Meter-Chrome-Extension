@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Usage Meter for Claude",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "See your Claude 5-hour and weekly usage live, right above the chat box. No API key, data stays in your browser.",
   "permissions": ["storage"],
   "host_permissions": ["https://claude.ai/*", "https://*.claude.ai/*"],

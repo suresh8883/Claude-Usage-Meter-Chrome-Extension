@@ -125,9 +125,11 @@
   // Primary: exact fields. Fallback: scan for utilization/resets pairs.
   function oneNode(node) {
     if (node && typeof node.utilization === "number") {
-      var p = node.utilization;
-      if (p <= 1.0001 && p > 0) p = p * 100; // tolerate fraction form
-      return { pct: Math.max(0, Math.min(100, p)), resetMs: node.resets_at ? Date.parse(node.resets_at) : null };
+      // Claude's usage API returns utilization as a 0–100 percentage already
+      // (1 means 1%, 17 means 17%). Do NOT rescale — just clamp to 0–100.
+      // (The old "fraction form" heuristic wrongly turned 1% into 100%.)
+      var p = Math.max(0, Math.min(100, node.utilization));
+      return { pct: p, resetMs: node.resets_at ? Date.parse(node.resets_at) : null };
     }
     return null;
   }
