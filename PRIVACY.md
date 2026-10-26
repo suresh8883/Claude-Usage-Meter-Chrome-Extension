@@ -49,7 +49,7 @@ the extension deletes all of its locally stored data.
 
 ## Contact
 
-Questions about this policy: `<your-contact-email>`
+Questions about this policy: thakstech@gmail.com
 
 ## Disclaimer
 
