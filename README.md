@@ -29,7 +29,7 @@ loads instantly, refreshes automatically, and keeps everything in your browser.
 ## Install
 
 ### From the Chrome Web Store
-_Coming soon (pending review)._ <!-- Replace with your Chrome Web Store link once live -->
+Install from the [Chrome Web Store listing](https://chromewebstore.google.com/detail/jlohkbicmcebjejobahelcfbdmhjfdie).
 
 ### From source (load unpacked)
 1. Download this repo (Code → Download ZIP) or clone it.

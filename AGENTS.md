@@ -2,8 +2,9 @@
 
 Shows the signed-in user's Claude **5-hour** and **weekly** usage as a small bar above the
 composer on claude.ai, so they stop opening Settings → Usage. Open source (MIT), published by
-Suresh (suresh8883). Chrome Web Store listing: README says "coming soon (pending review)";
-the real status is not recorded in this repo, so ask before changing store-facing copy.
+Suresh (suresh8883). Live on the Chrome Web Store since June 2026:
+https://chromewebstore.google.com/detail/jlohkbicmcebjejobahelcfbdmhjfdie (support = this repo's issues).
+Store-facing copy (name, description, PRIVACY) is reviewed by Google; ask before changing it.
 
 **Read this file first. It replaces exploring the project.**
 
